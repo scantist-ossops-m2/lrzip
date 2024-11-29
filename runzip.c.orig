@@ -108,8 +108,6 @@ static i64 unzip_match(void *ss, i64 len, int fd_out, int fd_hist, uint32 *cksum
 	while (len) {
 		uchar *buf;
 		n = MIN(len, offset);
-		if (unlikely(n < 1))
-			fatal_return(("Failed fd history in unzip_match due to corrupt archive\n"), -1);
 
 		buf = (uchar *)mmap(NULL, n, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
 		if (unlikely(buf == MAP_FAILED))
