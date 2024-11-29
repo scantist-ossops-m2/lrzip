@@ -111,6 +111,8 @@ static i64 unzip_match_v03(void *ss, i64 len, int fd_out, int fd_hist, uint32 *c
 	while (len) {
 		uchar *buf;
 		n = MIN(len, offset);
+		if (unlikely(n < 1))
+			fatal_return(("Failed fd history in unzip_match due to corrupt archive\n"), -1);
 
 		buf = malloc((size_t)n);
 		if (!buf)
