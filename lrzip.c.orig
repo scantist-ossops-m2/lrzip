@@ -797,8 +797,6 @@ bool decompress_file(rzip_control *control)
 	if (STDOUT && !TMP_OUTBUF) {
 		if (unlikely(!dump_tmpoutfile(control, fd_out)))
 			return false;
-		if (unlikely(expected_size < 0))
-			fatal_return(("Invalid expected size %lld\n", expected_size), false);
 	}
 
 	/* if we get here, no fatal_return(( errors during decompression */
